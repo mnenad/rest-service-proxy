@@ -9,10 +9,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 /*http://localhost:8080/greeting?name=User
+[
 {
- "id": 1,
- "content": "Hello, User!"
+id: 1,
+content: "Hello, User!",
+quoteId: 1,
+quote: "Working with Spring Boot is like pair-programming with the Spring developers."
+},
+{
+id: 2,
+content: "Hello, User!",
+quoteId: 2,
+quote: "With Boot you deploy everywhere you can find a JVM basically."
+},
+{
+id: 3,
+content: "Hello, User!",
+quoteId: 2,
+quote: "With Boot you deploy everywhere you can find a JVM basically."
 }
+]
  */
 @RestController
 public class GreetingController {
@@ -38,12 +54,12 @@ public class GreetingController {
         greetingArray[0]=new Greeting(counter.incrementAndGet(),
         				String.format(template, name),
         				quote1.getValue().getId(),
-        				quote1.getValue().getQuote());
+        				"TODO! Seleced fields from getOffers() API go here !");
         
         greetingArray[1]=new Greeting(counter.incrementAndGet(),
 				String.format(template, name),
 				quote2.getValue().getId(),
-				quote2.getValue().getQuote());
+        		"TODO! Seleced fields from getBalance() API go here !");
                 
         if (quote1.getValue().getId().intValue() < quote2.getValue().getId().intValue()){
         	Quote quote3 = restTemplate.getForObject(restURL3, Quote.class);
@@ -51,7 +67,7 @@ public class GreetingController {
         	greetingArray[2]=new Greeting(counter.incrementAndGet(),
     				String.format(template, name),
     				quote2.getValue().getId(),
-    				quote2.getValue().getQuote());
+        			"TODO! Seleced fields from getMembershipActivity() API go here (if NEW>OLD Balance) !");
         }
         return greetingArray;
     }

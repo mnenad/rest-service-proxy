@@ -1,0 +1,10 @@
+applications:
+- name: pcplusproxy
+  memory: 512M
+  instances: 1
+  host: pcplusproxy
+  domain: cfapps.io
+  path: gs-rest-service-0.1.0.jar
+  env: {
+    }
+ 
